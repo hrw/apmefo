@@ -1,0 +1,41 @@
+Source: apmefo
+Section: user/system
+Priority: extra
+Maintainer: Doris "Nathraiben" Kub <ben@nathrai.de>
+Build-Depends: debhelper (>= 5)
+Standards-Version: 3.7.2
+
+Package: apmefo
+Architecture: all
+Depends: python2.5, python-osso, python-dbus, python-gobject, python2.5-qt4-maemo5, python2.5-qt4-gui, python2.5-qt4-dbus, python2.5-qt4-core, python2.5-qt4-common
+Description: Automate the process of creating folders in the application menu by editing hildon.menu
+XSBC-Bugtracker: http://bugs.maemo.org
+XB-Maemo-Icon-26:
+ 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

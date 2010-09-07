@@ -1,0 +1,5 @@
+apmefo (0.9-6) stable; urgency=low
+
+  Catorise compatibility, allow UTF-8 folder names, localised application names, improved icon fetch routines for applications, improved application fetch routines
+
+ -- Doris "Nathraiben" Kub <ben@nathrai.de>  Mon, 05 Jul 2010 00:04:31 +0000
