@@ -20,7 +20,7 @@ class DialogDisplayText(QDialog, Ui_Dialog):
         """
         QDialog.__init__(self, parent)
         self.setupUi(self)
-    
+
     @pyqtSignature("")
     def on_btnCopy_released(self):
         """

@@ -20,7 +20,7 @@ class DialogSelectFile(QDialog, Ui_Dialog):
         QDialog.__init__(self, parent)
         self.setupUi(self)
         self.mainApp = mainApp
-    
+
     @pyqtSignature("")
     def on_btnOkay_released(self):
         """
