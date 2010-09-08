@@ -7,7 +7,7 @@ import os
 import codecs
 
 from PyQt4.QtGui import QMainWindow,  QIcon,  QListWidgetItem
-from PyQt4.QtCore import pyqtSignature,  QString
+from PyQt4.QtCore import pyqtSignature,  QString, Qt
 
 from Ui_appFolders import Ui_MainWindow
 
@@ -24,6 +24,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         QMainWindow.__init__(self, parent)
         self.setupUi(self)
+        self.setAttribute(Qt.WA_Maemo5AutoOrientation, True)
         self.mainApp = mainApp
 
     @pyqtSignature("")
