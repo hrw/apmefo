@@ -14,11 +14,11 @@ if __name__ == '__main__':
     mainApp.folderlist.readFilenames()
 
 #    readme = mainApp.readReadme()
-    warning = mainApp.readWarning()
+#    warning = mainApp.readWarning()
 
     ui = MainWindow(mainApp)
 #    ui.txtReadme.setText(readme)
-    ui.txtWarning.setHtml(warning)
+#    ui.txtWarning.setHtml(warning)
     ui.show()
 
     #Initing application
