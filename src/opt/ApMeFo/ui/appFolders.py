@@ -10,44 +10,31 @@ from PyQt4.QtGui import QMainWindow,  QIcon,  QListWidgetItem
 from PyQt4.QtCore import pyqtSignature,  QString, Qt
 
 from Ui_appFolders import Ui_MainWindow
+import Ui_folders
 
-class MainWindow(QMainWindow, Ui_MainWindow):
+class FoldersWindow(QMainWindow, Ui_folders.Ui_MainWindow):
 
-    hildonMenuPath = "/home/user/.config/menus/hildon.menu"
-
-    """
-    Class documentation goes here.
-    """
     def __init__(self, mainApp,  parent = None):
         """
         Constructor
         """
         QMainWindow.__init__(self, parent)
         self.setupUi(self)
-        self.setAttribute(Qt.WA_Maemo5AutoOrientation, True)
+#        self.setAttribute(Qt.WA_Maemo5StackedWindow)
         self.mainApp = mainApp
-
-    @pyqtSignature("")
-    def on_btnDelNameSelect_released(self):
-        """
-        Slot documentation goes here.
-        """
-        filename = self.mainApp.folderlist.selectFile()
-        if not filename == "":
-            self.inpDelName.setText(filename)
 
     @pyqtSignature("")
     def on_btnDelete_released(self):
         """
         Slot documentation goes here.
         """
-        if not self.inpDelName.text():
+        if not self.inpEditName.text():
             self.mainApp.showInfoPopup(self, "Please select a folder first!")
             return
 
         self.mainApp.folderlist.readFilenames()
         try:
-            dirFileName = self.mainApp.folderlist.nameref[unicode (self.inpDelName.text().toUtf8(),  "utf-8")]
+            dirFileName = self.mainApp.folderlist.nameref[unicode (self.inpEditName.text().toUtf8(),  "utf-8")]
         except:
             self.mainApp.showInfoPopup(self, "Could not find directory!")
 
@@ -59,6 +46,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         try:
             os.remove(menuFileName)
             self.mainApp.showInfoPopup(self, "Your folder was successfully removed!")
+            self.inpEditName.setText("")
         except:
             self.mainApp.showInfoPopup(self, "Your folder was removed, but could not find menu entry!")
 
@@ -70,6 +58,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         filename = self.mainApp.folderlist.selectFile()
         if not filename == "":
             self.inpEditName.setText(filename)
+        self.inpIconName.setText("")
 
     @pyqtSignature("")
     def on_btnIconSelect_released(self):
@@ -149,6 +138,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.mainApp.showInfoPopup(self, "Your folder was successfully saved!")
         except:
             self.mainApp.showInfoPopup(self, "An unknown error occured while trying to save!")
+
+
+class MainWindow(QMainWindow, Ui_MainWindow):
+
+    hildonMenuPath = "/home/user/.config/menus/hildon.menu"
+
+    """
+    Class documentation goes here.
+    """
+    def __init__(self, mainApp,  parent = None):
+        """
+        Constructor
+        """
+        QMainWindow.__init__(self, parent)
+        self.setupUi(self)
+        self.setAttribute(Qt.WA_Maemo5AutoOrientation, True)
+        self.mainApp = mainApp
 
     @pyqtSignature("")
     def on_btnAppAdd_released(self):
@@ -248,6 +254,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Slot documentation goes here.
         """
         self.mainApp.popupDiagnosis(self.hildonMenuPath)
+
+    @pyqtSignature("")
+    def on_actionFolders_triggered(self):
+        """
+        Slot documentation goes here.
+        """
+        foldersui = FoldersWindow(self.mainApp, self)
+        foldersui.show()
 
     @pyqtSignature("")
     def on_actionReadme_triggered(self):
