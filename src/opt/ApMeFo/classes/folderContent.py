@@ -10,6 +10,8 @@ from PyQt4.QtCore import QDir,  QStringList,  QString,  Qt
 
 from ui.dialogSelectFile import DialogSelectFile
 
+import ConfigParser
+
 class FolderContent():
 
     def __init__(self,  folderlist):
@@ -157,28 +159,24 @@ class FolderContent():
         return selected
 
     def getAppIsNoDisplay(self,  input):
-        inputFile = open(input)
-        filetxt = inputFile.read()
+        desktop = ConfigParser.ConfigParser()
+        try:
+            desktop.readfp(open(input))
+            try:
+                desktop.get('Desktop Entry', 'Type')
+                if splitAppl != 'Application':
+                    return True
+            except:
+                pass
 
-        filetxt = QString(filetxt)
-
-        splitAppl = filetxt.split("Type=Appl", QString.KeepEmptyParts,  Qt.CaseInsensitive)
-        if len(splitAppl) <= 1:
-            return True
-
-        splitDisplay = filetxt.split("NoDisplay=", QString.KeepEmptyParts,  Qt.CaseInsensitive)
-        if  len(splitDisplay) <= 1:
-            return False
-
-        filetxt = splitDisplay[1]
-        filetxt = filetxt.split("\n")[0]
-
-        filetxt = QString(filetxt)
-        filetxt = filetxt.toLower()
-
-        if filetxt == "true":
-            return True
-        else:
+            try:
+                if desktop.getboolean('Desktop Entry', 'NoDisplay'):
+                    return True
+                else:
+                    return False
+            except:
+                return False
+        except:
             return False
 
     def readAllApps(self):

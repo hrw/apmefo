@@ -10,6 +10,8 @@ from PyQt4.QtCore import QDir,  QStringList,  QString
 
 from ui.dialogSelectFile import DialogSelectFile
 
+import ConfigParser
+
 class FolderList():
 
     IconpathLocal = "home/user/.local/share/icons/hicolor/48x48/hildon/"
@@ -95,47 +97,36 @@ class FolderList():
         return selected
 
     def getNameFromDirFile(self, input):
-        inputFile = open(input)
-        filecontent= inputFile.read()
-        filetxt = filecontent.split("Name=")[1]
-        filetxt = filetxt.split("\n")[0]
-        filetxt = filetxt.split("\r")[0]
+        desktop = ConfigParser.ConfigParser()
+        desktop.readfp(open(input))
+        try:
+            filetxt = desktop.get('Desktop Entry', 'Name')
+        except:
+            filetxt = "";
+
         if  filetxt == "":
             part = string.split(input,  '/')[-1]
             part = string.split(part, '.directory')[0]
             part = string.split(part, '.desktop')[0]
         else:
-
-            domain = filecontent.split("X-Text-Domain=")
-            if len(domain) > 1:
-                domain = domain[1]
-                domain = domain.split("\n")[0]
-            else:
+            print "Filetxt = '%s'" % filetxt
+            try:
+                domain = desktop.get('Desktop Entry', 'X-Text-Domain')
+            except:
                 domain = "maemo-af-desktop"
 
             gettext.textdomain(domain)
             lang = gettext.translation(domain, "/usr/share/locale",  languages= self.langs, fallback = True)
-#            part = unicode (QString.fromUtf8(lang.gettext(filetxt)).toUtf8(),  "utf-8")
             part = unicode(QString.fromUtf8(lang.gettext(filetxt)).toUtf8(),  "utf-8")
-        inputFile.close()
         return part
 
     def getIconFromDirFile(self, input):
-        inputFile = open(input)
-        filetxt = inputFile.read()
-        splitIcon = filetxt.split("Icon=")
-
-        if len(splitIcon) <= 1:
+        desktop = ConfigParser.ConfigParser()
+        desktop.readfp(open(input))
+        try:
+            return desktop.get('Desktop Entry', 'Icon')
+        except:
             return
-
-        filetxt = splitIcon[1]
-        filetxt = filetxt.split("\n")[0]
-        inputFile.close()
-
-        if filetxt == "":
-            return
-        part = filetxt
-        return part
 
     def readFilenames(self):
         self.nameref.clear()
