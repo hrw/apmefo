@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'appFolders.ui'
 #
-# Created: Wed Sep  8 21:48:10 2010
+# Created: Tue Sep 14 14:21:29 2010
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -83,10 +83,16 @@ class Ui_MainWindow(object):
         self.actionDiagnosis_Tool.setObjectName("actionDiagnosis_Tool")
         self.actionReadme = QtGui.QAction(MainWindow)
         self.actionReadme.setObjectName("actionReadme")
+        self.actionActivate = QtGui.QAction(MainWindow)
+        self.actionActivate.setObjectName("actionActivate")
+        self.actionDeactivate = QtGui.QAction(MainWindow)
+        self.actionDeactivate.setObjectName("actionDeactivate")
         self.actionFolders = QtGui.QAction(MainWindow)
         self.actionFolders.setObjectName("actionFolders")
         self.menuActionDiagnosis_Tool.addAction(self.actionDiagnosis_Tool)
         self.menuActionDiagnosis_Tool.addAction(self.actionReadme)
+        self.menuActionDiagnosis_Tool.addAction(self.actionActivate)
+        self.menuActionDiagnosis_Tool.addAction(self.actionDeactivate)
         self.menuActionDiagnosis_Tool.addAction(self.actionFolders)
         self.menuBar.addAction(self.menuActionDiagnosis_Tool.menuAction())
 
@@ -102,8 +108,10 @@ class Ui_MainWindow(object):
         self.btnAppDown.setText(QtGui.QApplication.translate("MainWindow", "v", None, QtGui.QApplication.UnicodeUTF8))
         self.btnAppDelete.setText(QtGui.QApplication.translate("MainWindow", "-", None, QtGui.QApplication.UnicodeUTF8))
         self.btnUpdate.setText(QtGui.QApplication.translate("MainWindow", "Update", None, QtGui.QApplication.UnicodeUTF8))
-        self.menuActionDiagnosis_Tool.setTitle(QtGui.QApplication.translate("MainWindow", "actionDiagnosis_Tool", None, QtGui.QApplication.UnicodeUTF8))
+        self.menuActionDiagnosis_Tool.setTitle(QtGui.QApplication.translate("MainWindow", "Menu", None, QtGui.QApplication.UnicodeUTF8))
         self.actionDiagnosis_Tool.setText(QtGui.QApplication.translate("MainWindow", "Diagnosis Tool", None, QtGui.QApplication.UnicodeUTF8))
         self.actionReadme.setText(QtGui.QApplication.translate("MainWindow", "Readme", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionActivate.setText(QtGui.QApplication.translate("MainWindow", "Activate", None, QtGui.QApplication.UnicodeUTF8))
+        self.actionDeactivate.setText(QtGui.QApplication.translate("MainWindow", "Deactivate", None, QtGui.QApplication.UnicodeUTF8))
         self.actionFolders.setText(QtGui.QApplication.translate("MainWindow", "Folders", None, QtGui.QApplication.UnicodeUTF8))
 

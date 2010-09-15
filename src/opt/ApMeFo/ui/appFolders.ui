@@ -182,10 +182,12 @@
    </property>
    <widget class="QMenu" name="menuActionDiagnosis_Tool">
     <property name="title">
-     <string>actionDiagnosis_Tool</string>
+     <string>Menu</string>
     </property>
     <addaction name="actionDiagnosis_Tool"/>
     <addaction name="actionReadme"/>
+    <addaction name="actionActivate"/>
+    <addaction name="actionDeactivate"/>
     <addaction name="actionFolders"/>
    </widget>
    <addaction name="menuActionDiagnosis_Tool"/>
@@ -198,6 +200,16 @@
   <action name="actionReadme">
    <property name="text">
     <string>Readme</string>
+   </property>
+  </action>
+  <action name="actionActivate">
+   <property name="text">
+    <string>Activate</string>
+   </property>
+  </action>
+  <action name="actionDeactivate">
+   <property name="text">
+    <string>Deactivate</string>
    </property>
   </action>
   <action name="actionFolders">
