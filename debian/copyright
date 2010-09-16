@@ -1,14 +1,11 @@
 This package was py2debianized(0.5.3) by Doris "Nathraiben" Kub <ben@nathrai.de> on
 Mon, 05 Jul 2010 00:04:31 +0000.
 
-It was downloaded from 
-
 Upstream Author: Doris "Nathraiben" Kub <ben@nathrai.de>
 
 Copyright: 2010 by Doris "Nathraiben" Kub
 
 License:
-
 
     This package is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,9 +24,5 @@ License:
 On Debian systems, the complete text of the GNU General
 Public License can be found in `/usr/share/common-licenses/GPL'.
 
-
 The Debian packaging is (C) 2010, Doris "Nathraiben" Kub <ben@nathrai.de> and
 is licensed under the GPL, see above.
-
-# Please also look if there are files or directories which have a
-# different copyright/license attached and list them here.
