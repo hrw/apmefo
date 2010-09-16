@@ -6,7 +6,7 @@ Module implementing MainWindow.
 import os
 import codecs
 
-from PyQt4.QtGui import QMainWindow,  QIcon,  QListWidgetItem
+from PyQt4.QtGui import QMainWindow,  QIcon,  QListWidgetItem, QMessageBox
 from PyQt4.QtCore import pyqtSignature,  QString, Qt
 
 from Ui_appFolders import Ui_MainWindow
@@ -234,25 +234,34 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        hildonMenuText = self.mainApp.readHildonMenuTemplate()
-        try:
-            f = open(self.hildonMenuPath, 'w')
-            f.write(hildonMenuText)
-            f.close()
-            self.mainApp.showInfoPopup(self, "ApMeFo has been activated!")
-        except:
-            self.mainApp.showInfoPopup(self, "An error occured while trying to deactivate ApMeFo!")
+        msgbox = QMessageBox()
+        msgbox.setWindowTitle("Do you want to activate ApMeFo?")
+        msgbox.setText(self.mainApp.readWarning())
+        msgbox.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        if QMessageBox.Yes == msgbox.exec_():
+            hildonMenuText = self.mainApp.readHildonMenuTemplate()
+            try:
+                f = open(self.hildonMenuPath, 'w')
+                f.write(hildonMenuText)
+                f.close()
+                self.mainApp.showInfoPopup(self, "ApMeFo has been activated!")
+            except:
+                self.mainApp.showInfoPopup(self, "An error occured while trying to deactivate ApMeFo!")
 
     @pyqtSignature("")
     def on_actionDeactivate_triggered(self):
         """
         Slot documentation goes here.
         """
-        try:
-            os.remove(self.hildonMenuPath)
-            self.mainApp.showInfoPopup(self, "ApMeFo has been deactivated!")
-        except:
-            self.mainApp.showInfoPopup(self, "An error occured while trying to deactivate ApMeFo!")
+        msgbox = QMessageBox()
+        msgbox.setWindowTitle("Do you want to deactivate ApMeFo?")
+        msgbox.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        if QMessageBox.Yes == msgbox.exec_():
+            try:
+                os.remove(self.hildonMenuPath)
+                self.mainApp.showInfoPopup(self, "ApMeFo has been deactivated!")
+            except:
+                self.mainApp.showInfoPopup(self, "An error occured while trying to deactivate ApMeFo!")
 
     @pyqtSignature("")
     def on_actionDiagnosis_Tool_triggered(self):
