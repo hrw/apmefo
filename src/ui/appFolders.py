@@ -230,7 +230,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 #                listItem = QListViewItem(app,  self.listApps,  QListWidgetItem.UserType)
 
     @pyqtSignature("")
-    def on_btnActivate_released(self):
+    def on_actionActivate_triggered(self):
         """
         Slot documentation goes here.
         """
@@ -244,7 +244,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.mainApp.showInfoPopup(self, "An error occured while trying to deactivate ApMeFo!")
 
     @pyqtSignature("")
-    def on_btnDeactivate_released(self):
+    def on_actionDeactivate_triggered(self):
         """
         Slot documentation goes here.
         """
