@@ -1,5 +1,18 @@
+apmefo (0.10-1) stable; urgency=low
+
+  * changed UI
+  * fixed .desktop parsing by using ConfigParser python module
+    (some Maemo packages has .desktop files with " " in key names - not
+    parsable now)
+
+ -- Marcin Juszkiewicz <marcin@juszkiewicz.com.pl>  Thu, 16 Sep 2010 13:24:54 +0200
+
 apmefo (0.9-6) stable; urgency=low
 
-  Catorise compatibility, allow UTF-8 folder names, localised application names, improved icon fetch routines for applications, improved application fetch routines
+  * Catorise compatibility, 
+  * allow UTF-8 folder names, 
+  * localised application names, 
+  * improved icon fetch routines for applications, 
+  * improved application fetch routines
 
  -- Doris "Nathraiben" Kub <ben@nathrai.de>  Mon, 05 Jul 2010 00:04:31 +0000
