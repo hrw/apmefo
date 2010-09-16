@@ -7,9 +7,16 @@ Standards-Version: 3.7.2
 
 Package: apmefo
 Architecture: all
-Depends: python2.5, python-osso, python-dbus, python-gobject, python2.5-qt4-maemo5, python2.5-qt4-gui, python2.5-qt4-dbus, python2.5-qt4-core, python2.5-qt4-common
-Description: Automate the process of creating folders in the application menu by editing hildon.menu
-XSBC-Bugtracker: http://bugs.maemo.org
+Depends: python, python-osso, python-dbus, python-gobject,
+  python2.5-qt4-maemo5, python2.5-qt4-gui, python2.5-qt4-dbus,
+  python2.5-qt4-core, python2.5-qt4-common
+Description: Application launcher icons manager
+ ApMeFo allows the applications menu to be put into a series of folders.
+ Order inside of folder can be sorted by user. One application can be put info
+ few folders.
+ .
+# bugs.maemo.org was listed but does not have apmefo as product (hrw)
+#XSBC-Bugtracker: http://bugs.maemo.org
 XB-Maemo-Icon-26:
  iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAL
  EwAACxMBAJqcGAAABdRJREFUaN7tmcuPXEcVh79TdW93T5vJJMTPCbYT2WBAEUGAxEMiCDaIhxDC
