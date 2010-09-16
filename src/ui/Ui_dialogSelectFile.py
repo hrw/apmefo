@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'dialogSelectFile.ui'
+# Form implementation generated from reading ui file 'forms/dialogSelectFile.ui'
 #
-# Created: Wed Sep  8 20:47:35 2010
+# Created: Thu Sep 16 13:44:02 2010
 #      by: PyQt4 UI code generator 4.7.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -18,14 +18,14 @@ class Ui_Dialog(object):
         self.listFile = QtGui.QListWidget(Dialog)
         self.listFile.setObjectName("listFile")
         self.gridLayout.addWidget(self.listFile, 0, 0, 1, 1)
-        self.horizontalLayout = QtGui.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
+        self.verticalLayout = QtGui.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem)
         self.btnOkay = QtGui.QPushButton(Dialog)
         self.btnOkay.setObjectName("btnOkay")
-        self.horizontalLayout.addWidget(self.btnOkay)
-        self.gridLayout.addLayout(self.horizontalLayout, 1, 0, 1, 1)
+        self.verticalLayout.addWidget(self.btnOkay)
+        self.gridLayout.addLayout(self.verticalLayout, 0, 1, 1, 1)
 
         self.retranslateUi(Dialog)
         QtCore.QObject.connect(self.btnOkay, QtCore.SIGNAL("clicked()"), Dialog.accept)

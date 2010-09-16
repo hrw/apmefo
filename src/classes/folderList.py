@@ -109,7 +109,6 @@ class FolderList():
             part = string.split(part, '.directory')[0]
             part = string.split(part, '.desktop')[0]
         else:
-            print "Filetxt = '%s'" % filetxt
             try:
                 domain = desktop.get('Desktop Entry', 'X-Text-Domain')
             except:

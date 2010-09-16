@@ -55,19 +55,23 @@ class FoldersWindow(QMainWindow, Ui_folders.Ui_MainWindow):
         """
         Slot documentation goes here.
         """
+        self.setAttribute(Qt.WA_Maemo5ShowProgressIndicator, True)
         filename = self.mainApp.folderlist.selectFile()
         if not filename == "":
             self.inpEditName.setText(filename)
         self.inpIconName.setText("")
+        self.setAttribute(Qt.WA_Maemo5ShowProgressIndicator, False)
 
     @pyqtSignature("")
     def on_btnIconSelect_released(self):
         """
         Slot documentation goes here.
         """
+        self.setAttribute(Qt.WA_Maemo5ShowProgressIndicator, True)
         filename = self.mainApp.folderlist.selectIcon(self)
         if not filename == "":
             self.inpIcon.setText(filename)
+        self.setAttribute(Qt.WA_Maemo5ShowProgressIndicator, False)
 
     @pyqtSignature("")
     def on_btnCreate_released(self):
@@ -201,12 +205,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
+        self.setAttribute(Qt.WA_Maemo5ShowProgressIndicator, True)
         filename = self.mainApp.folderlist.selectFile()
         if not filename == "":
             self.inpAddName.setText(filename)
         self.mainApp.foldercontent.setFolder(filename)
 
         self.refreshContent()
+        self.setAttribute(Qt.WA_Maemo5ShowProgressIndicator, False)
 
     def refreshContent(self):
         self.listApps.clear()

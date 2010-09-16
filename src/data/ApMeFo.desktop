@@ -1,10 +1,9 @@
-
 [Desktop Entry]
 Version=1.0.0
 Encoding=UTF-8
 Name=ApMeFo
 Comment=Create Application Menu Folders 
-Exec=python /opt/ApMeFo/Main.py
+Exec=/opt/ApMeFo/Main.py
 Icon=application_apmefo
 X-Icon-path=/usr/share/icons
 X-Window-Icon=application_apmefo
