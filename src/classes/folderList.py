@@ -98,22 +98,38 @@ class FolderList():
 
     def getNameFromDirFile(self, input):
         desktop = ConfigParser.ConfigParser()
-        desktop.readfp(open(input))
         try:
-            filetxt = desktop.get('Desktop Entry', 'Name')
-        except:
-            filetxt = "";
+            desktop.readfp(open(input))
+            try:
+                filetxt = desktop.get('Desktop Entry', 'Name')
+            except:
+                filetxt = "";
+            try:
+                domain = desktop.get('Desktop Entry', 'X-Text-Domain')
+            except:
+                domain = "maemo-af-desktop"
+        except ConfigParser.ParsingError:
+            #show note which .desktop file is wrong?
+            inputFile = open(input)
+            filecontent= inputFile.read()
+            try:
+                filetxt = filecontent.split("Name=")[1]
+            except:
+                filetxt = filecontent.split("Name =")[1]
+
+            filetxt = filetxt.split("\n")[0].split("\r")[0].lstrip()
+
+            try:
+                domain = filecontent.split("X-Text-Domain")[1]
+                domain = domain.lstrip(' =')
+            except:
+                domain = "maemo-af-desktop"
 
         if  filetxt == "":
             part = string.split(input,  '/')[-1]
             part = string.split(part, '.directory')[0]
             part = string.split(part, '.desktop')[0]
         else:
-            try:
-                domain = desktop.get('Desktop Entry', 'X-Text-Domain')
-            except:
-                domain = "maemo-af-desktop"
-
             gettext.textdomain(domain)
             lang = gettext.translation(domain, "/usr/share/locale",  languages= self.langs, fallback = True)
             part = unicode(QString.fromUtf8(lang.gettext(filetxt)).toUtf8(),  "utf-8")
@@ -121,11 +137,21 @@ class FolderList():
 
     def getIconFromDirFile(self, input):
         desktop = ConfigParser.ConfigParser()
-        desktop.readfp(open(input))
         try:
-            return desktop.get('Desktop Entry', 'Icon')
-        except:
-            return
+            desktop.readfp(open(input))
+            try:
+                return desktop.get('Desktop Entry', 'Icon')
+            except:
+                return
+        except ConfigParser.ParsingError:
+            #show note which .desktop file is wrong?
+            inputFile = open(input)
+            filecontent= inputFile.read()
+            try:
+                filetxt = filecontent.split("Icon")[1]
+                return domain.lstrip(' =')
+            except:
+                return
 
     def readFilenames(self):
         self.nameref.clear()
